@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Personal website for Your Name: portfolio, projects, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c0f; --card:#12151a; --text:#e7ecf3; --muted:#a9b3c1; --accent:#5cc8ff; --accent-2:#ffd166;
+      --shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1000px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;background:linear-gradient(180deg, rgba(11,12,15,.95) 60%, rgba(11,12,15,0));backdrop-filter: blur(6px);z-index:10}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:var(--shadow)}
+    nav a{margin:0 10px;color:var(--muted)}
+    nav a.active, nav a:hover{color:var(--text)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--accent);color:#0b0c0f;font-weight:700;box-shadow:var(--shadow)}
+    .btn.secondary{background:#222a35;color:var(--text)}
+    .grid{display:grid;gap:18px}
+    .hero{padding:80px 0 30px}
+    .hero h1{font-size:clamp(28px,6vw,52px);line-height:1.05;margin:8px 0}
+    .hero p{color:var(--muted);font-size:clamp(16px,2.4vw,18px)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .badge{padding:6px 10px;border-radius:999px;background:#1a202a;color:var(--muted);font-size:13px;border:1px solid #222}
+    section{padding:40px 0}
+    .card{background:var(--card);border:1px solid #1f232b;border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .6rem}
+    .card p{color:var(--muted)}
+    .projects{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .about{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+    @media (max-width:800px){.about{grid-template-columns:1fr}}
+    footer{padding:50px 0 30px;color:var(--muted);text-align:center}
+    .muted{color:var(--muted)}
+    .tag{font-size:12px;color:#9fb3c8;background:#17202a;border:1px solid #263241;padding:3px 8px;border-radius:999px}
+    .hr{height:1px;background:linear-gradient(90deg,transparent,#222,transparent);margin:30px 0}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .contact-form{display:grid;gap:10px}
+    input, textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #2a3140;background:#0e1218;color:var(--text)}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <strong>Your Name</strong>
+    </div>
+    <nav>
+      <a href="#work" class="active">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn secondary" href="resume.pdf">Resume</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <span class="tag">👋 Hello</span>
+      <h1>I'm <span style="color:var(--accent)">Your Name</span> — I build clean, fast websites and data apps.</h1>
+      <p>Short bio goes here. Mention your role (e.g., PhD student, researcher) and what you like working on. Keep it 1–2 sentences.</p>
+      <div class="badges">
+        <span class="badge">R / Python / JS</span>
+        <span class="badge">Econometrics</span>
+        <span class="badge">Geospatial</span>
+        <span class="badge">Risk & Markets</span>
+      </div>
+      <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="#contact">Contact me</a>
+        <a class="btn secondary" href="#work">See projects</a>
+      </div>
+    </section>
+
+    <div class="hr"></div>
+
+    <section id="work">
+      <h2>Selected Projects</h2>
+      <div class="grid projects" style="margin-top:12px">
+        <article class="card">
+          <div class="chips"><span class="tag">Research</span><span class="tag">R</span></div>
+          <h3>Reference-Dependent Grain Marketing</h3>
+          <p>Panel analysis of farmer marketing decisions with heterogeneous beliefs and cost-based reference points. Elasticities, finite mixtures, and risk management insights.</p>
+          <a href="#">Read paper →</a>
+        </article>
+        <article class="card">
+          <div class="chips"><span class="tag">Web App</span><span class="tag">Python</span></div>
+          <h3>County-Level Crop Transitions</h3>
+          <p>Geospatial raster workflow to summarize fallow/crop transitions and map county-level patterns with PRISM overlays.</p>
+          <a href="#">View repo →</a>
+        </article>
+        <article class="card">
+          <div class="chips"><span class="tag">Dashboard</span><span class="tag">JS</span></div>
+          <h3>Price Signal Explorer</h3>
+          <p>Interactive dashboard to visualize price signals, reference bands, and sales shares across time.</p>
+          <a href="#">Live demo →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="card">
+        <h2>About</h2>
+        <p class="muted">Replace this with a 4–6 sentence bio. Mention your research area, tools you use (R, Python, fixest, ggplot2, pandas, etc.), and what you're seeking (collabs, roles, speaking). Keep it personable.</p>
+        <ul>
+          <li>🎓 PhD in ACE @ UIUC</li>
+          <li>📈 Risk management, behavioral economics</li>
+          <li>🗺️ Geospatial & raster analytics</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Skills</h2>
+        <div class="badges" style="margin:8px 0 14px">
+          <span class="badge">R / tidyverse</span>
+          <span class="badge">Python / pandas</span>
+          <span class="badge">Fixest / Flexmix</span>
+          <span class="badge">Matplotlib / ggplot2</span>
+          <span class="badge">Postgres / SQL</span>
+          <span class="badge">LaTeX / Beamer</span>
+        </div>
+        <p class="muted">Add anything else you want to highlight: teaching, talks, awards.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid" style="grid-template-columns:1.2fr .8fr">
+        <div class="card">
+          <h3>Get in touch</h3>
+          <p class="muted">Email: <a href="mailto:you@yourdomain.com">you@yourdomain.com</a> · LinkedIn · Google Scholar · X</p>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! Replace this with your form service.');">
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" placeholder="Your name" />
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+            <label class="sr-only" for="msg">Message</label>
+            <textarea id="msg" rows="4" placeholder="Say hello…"></textarea>
+            <button class="btn" type="submit">Send message</button>
+          </form>
+          <p class="muted" style="margin-top:8px;font-size:13px">Tip: Replace the form with Formspree, Basin, or Netlify Forms for no‑backend contact.</p>
+        </div>
+        <div class="card">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#work">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="resume.pdf">Resume</a></li>
+          </ul>
+          <p class="muted">Drop a PDF named <code>resume.pdf</code> next to this file to enable the link.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="hr"></div>
+
+    <footer>
+      <p>© <span id="year"></span> Your Name · Built with plain HTML/CSS · Hosted on GitHub Pages / Netlify / Vercel</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

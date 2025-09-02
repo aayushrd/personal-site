@@ -3,51 +3,169 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Site Under Development</title>
-  <meta name="robots" content="noindex,nofollow" />
-  <meta name="description" content="This site is under development and will be live soon." />
+  <title>Aayush — Academic Homepage</title>
   <style>
-    :root{
-      --bg:#0b0c0f; --card:#131720; --text:#e8edf4; --muted:#9fb0c3; --accent:#5cc8ff;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+    :root {
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #5b5b5b;
+      --accent: #1f6feb;
+      --card: #f6f8fa;
+      --line: #e5e7eb;
+      --radius: 14px;
+      --maxw: 960px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:radial-gradient(1200px 800px at 80% -20%, #162033 0%, transparent 60%), var(--bg);color:var(--text)}
-    .wrap{min-height:100%;display:grid;place-items:center;padding:24px}
-    .card{width:min(680px,100%);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid #1e2634;border-radius:20px;padding:28px;box-shadow:var(--shadow)}
-    h1{font-size:clamp(26px,5vw,40px);margin:0 0 8px}
-    p{color:var(--muted);line-height:1.6;margin:.5rem 0}
-    .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-    .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#0f1522;border:1px solid #253047;color:#c6d4e6;font-size:14px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--accent);color:#0b0c0f;font-weight:700;text-decoration:none}
-    .btn.muted{background:#202838;color:#dce6f4}
-    .footer{margin-top:18px;color:#8999ad;font-size:14px}
-    .pulse{position:relative;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(92,200,255,.6);animation:pulse 2s infinite}
-    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(92,200,255,.6)}70%{box-shadow:0 0 0 14px rgba(92,200,255,0)}100%{box-shadow:0 0 0 0 rgba(92,200,255,0)}}
-    code{background:#0f1522;border:1px solid #253047;border-radius:8px;padding:2px 6px}
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --text: #f0f0f0;
+        --muted: #b5b5b5;
+        --card: #171a21;
+        --line: #262a33;
+      }
+    }
+    body {
+      margin: 0;
+      font: 16px/1.7 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+    .layout { display: grid; grid-template-columns: 280px 1fr; gap: 32px; }
+
+    .sidebar {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+    }
+    .portrait { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 14px; border: 2px solid var(--line); }
+    .name { text-align: center; font-size: 24px; margin: 6px 0 2px; font-weight: 600; }
+    .tagline { text-align: center; color: var(--muted); margin: 0 0 14px; font-size: 0.95rem; }
+
+    .sidebar section { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 14px; }
+    .sidebar section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+
+    .links { display: grid; gap: 8px; margin-top: 8px; }
+    .btn { padding: 9px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text); text-decoration: none; font-weight: 600; text-align: center; }
+    .btn:hover { filter: brightness(0.98); }
+    .mini { display: flex; justify-content: center; gap: 12px; margin-top: 6px; font-size: 0.9rem; }
+    .mini a { color: var(--accent); text-decoration: none; }
+
+    main { padding-top: 4px; }
+    section { padding: 22px 0; border-bottom: 1px solid var(--line); }
+    section:last-of-type { border-bottom: 0; }
+    h2 { font-size: 20px; margin: 0 0 10px; }
+    p { margin: 0 0 12px; }
+    ul { margin: 8px 0 0 20px; }
+    a { color: var(--accent); }
+
+    .papers { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .paper { border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; background: var(--card); }
+    .paper .t { font-weight: 700; margin: 0 0 6px; }
+    .paper .m { color: var(--muted); margin: 0 0 6px; font-size: 0.95rem; }
+
+    .quicknav { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 14px; }
+    .chip { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); text-decoration: none; color: var(--text); font-size: 0.9rem; }
+    .chip:hover { background: var(--card); }
+
+    footer { color: var(--muted); font-size: 0.9rem; padding: 18px 0 40px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: relative; top: 0; }
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card" role="status" aria-live="polite">
-      <div class="row" style="margin-bottom:8px">
-        <div class="pulse" aria-hidden="true"></div>
-        <span class="badge">Under Development</span>
-      </div>
-      <h1>We&rsquo;re building something new.</h1>
-      <p>Thanks for stopping by! This site is currently under development and will be live soon. Please check back shortly.</p>
-      <p>If you need to reach me in the meantime, email <a href="mailto:you@yourdomain.com">you@yourdomain.com</a>.</p>
+  <div class="wrap">
+    <div class="layout">
+      <aside class="sidebar">
+        <section>
+          <img class="portrait" src="images/profile.jpg" alt="Portrait of Aayush" />
+          <div class="name">Aayush</div>
+          <div class="tagline">PhD Student · ACE · UIUC</div>
+        </section>
 
-      <div class="row" style="margin-top:14px">
-        <a class="btn" href="#" onclick="event.preventDefault(); location.reload(true);">Refresh</a>
-        <a class="btn muted" href="https://github.com/" target="_blank" rel="noopener">Follow updates</a>
-      </div>
+        <section>
+          <div class="links">
+            <a class="btn" href="#cv">View CV</a>
+            <a class="btn" href="mailto:aayush@example.edu">Email</a>
+          </div>
+        </section>
 
-      <p class="footer">© <span id="year"></span> Your Name · All rights reserved</p>
-      <noscript><p class="footer">Note: JavaScript is disabled in your browser; dynamic updates are limited.</p></noscript>
-    </section>
-  </main>
+        <section>
+          <div class="mini">
+            <a href="#papers">Papers</a>
+            <span>·</span>
+            <a href="#contact">Contact</a>
+          </div>
+        </section>
+      </aside>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+      <main>
+        <header>
+          <h1 style="margin:0 0 6px; font-size: 32px;">Aayush</h1>
+          <div class="quicknav">
+            <a class="chip" href="#about">About</a>
+            <a class="chip" href="#interests">Research Interests</a>
+            <a class="chip" href="#papers">Working Papers</a>
+            <a class="chip" href="#cv">CV</a>
+            <a class="chip" href="#contact">Contact</a>
+          </div>
+        </header>
+
+        <section id="about">
+          <h2>About</h2>
+          <p>I'm a PhD student in Agricultural &amp; Consumer Economics at the University of Illinois Urbana-Champaign. I study grain marketing behavior, risk management, and reference-dependent decision-making.</p>
+        </section>
+
+        <section id="interests">
+          <h2>Research Interests</h2>
+          <ul>
+            <li>Commodity marketing under risk &amp; uncertainty</li>
+            <li>Reference dependence &amp; behavioral economics</li>
+            <li>Hedging &amp; price risk management</li>
+          </ul>
+        </section>
+
+        <section id="papers">
+          <h2>Working Papers</h2>
+          <ul class="papers">
+            <li class="paper">
+              <p class="t">Reference-Dependent Grain Marketing with Heterogeneous Expectations</p>
+              <p class="m">Aayush · 2025 · Working paper</p>
+            </li>
+            <li class="paper">
+              <p class="t">Cross-Crop Substitution in Marketing Decisions</p>
+              <p class="m">Aayush · 2025 · Draft in progress</p>
+            </li>
+          </ul>
+        </section>
+
+        <section id="cv">
+          <h2>CV</h2>
+          <p><a class="btn" href="cv.pdf" target="_blank">Download CV (PDF)</a></p>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:aayush@example.edu">aayush@example.edu</a></p>
+        </section>
+
+        <footer>
+          <p>© <span id="y"></span> Aayush. Built with plain HTML &amp; CSS.</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
